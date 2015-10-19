@@ -47,11 +47,16 @@
   <require from="layout/layout-body.html" as="layout-body"></require>
   <require from="layout/layout-footer.html" as="layout-footer"></require>
   <require from="layout/sidebar-left" as="sidebar-left"></require>
+  <require from="layout/sidebar-menu-left.html" as="sidebar-menu-left"></require>
+
+  <button click.delegate="changeRoute('dashboard')">Element</button>
 
   <app-layout>
     <layout-header layout-cnf.bind="layoutCnf"></layout-header>
     <layout-body>
-      <sidebar-left router.bind="router" layout-cnf.bind="layoutCnf"></sidebar-left>
+      <sidebar-left layout-cnf.bind="layoutCnf">
+        <sidebar-menu-left route-info.bind="routeInfo"></sidebar-menu-left>
+      </sidebar-left>
     </layout-body>
     <layout-footer></layout-footer>
   </app-layout>

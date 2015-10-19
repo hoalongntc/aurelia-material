@@ -1,21 +1,42 @@
-import {bootstrap} from 'github:twbs/bootstrap@3.3.5';
+import {Redirect} from 'aurelia-router';
 
 export class App {
   configureRouter(config, router) {
     config.title = 'Aurelia';
+    config.addPipelineStep('authorize', RouteChanged);
     config.map([
-      { route: ['', 'dashboard'], name: 'dashboard',      moduleId: 'dashboard',      nav: true, title: 'Home' },
-      { route: 'users',           name: 'users',          moduleId: 'users',          nav: true, title: 'Github Users' },
-      { route: 'child-router',    name: 'child-router',   moduleId: 'child-router',   nav: true, title: 'Child Router' }
+      { route: ['', 'dashboard'], name: 'dashboard', moduleId: 'dashboard',
+        nav: true, title: 'Home'},
+      { route: 'typography', name: 'typography', moduleId: 'components/typography',
+        nav: true, title: 'Typography'},
+      { route: 'widget-templates', name: 'widget-templates', moduleId: 'components/widgets/widget-templates',
+        nav: true, title: 'Widget templates'},
+      { route: 'widgets', name: 'widgets', moduleId: 'components/widgets/widgets',
+        nav: true, title: 'Widgets'}
     ]);
 
     this.router = router;
-    this.layoutCnf = {
-      sidebar: {
-        left: false,
-        right: false
-      },
-      type: '0'
-    };
+  }
+
+  layoutCnf = {
+    sidebar: {
+      left: false,
+      right: false
+    },
+    type: '0'
+  };
+  routeInfo = {
+    current: ''
+  };
+
+  changeRoute(route) {
+    this.routeInfo.current = route;
+  }
+}
+
+class RouteChanged {
+  run(routingContext, next) {
+    console.log(routingContext.nextInstruction.config.name);
+    return next();
   }
 }
