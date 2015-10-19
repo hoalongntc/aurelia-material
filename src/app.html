@@ -42,24 +42,22 @@
   </div>
   <![endif]-->
 
-  <require from="layout/app-layout" as="app-layout"></require>
+  <require from="layout/layout.html" as="layout"></require>
   <require from="layout/layout-header" as="layout-header"></require>
   <require from="layout/layout-body.html" as="layout-body"></require>
   <require from="layout/layout-footer.html" as="layout-footer"></require>
   <require from="layout/sidebar-left" as="sidebar-left"></require>
-  <require from="layout/sidebar-menu-left.html" as="sidebar-menu-left"></require>
+  <require from="layout/elements/menu" as="menu"></require>
 
-  <button click.delegate="changeRoute('dashboard')">Element</button>
-
-  <app-layout>
+  <layout>
     <layout-header layout-cnf.bind="layoutCnf"></layout-header>
     <layout-body>
       <sidebar-left layout-cnf.bind="layoutCnf">
-        <sidebar-menu-left route-info.bind="routeInfo"></sidebar-menu-left>
+        <menu route-info.bind="routeInfo" router.bind="router"></menu>
       </sidebar-left>
     </layout-body>
     <layout-footer></layout-footer>
-  </app-layout>
+  </layout>
 
 </template>
 
