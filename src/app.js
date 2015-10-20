@@ -1,12 +1,10 @@
-import {Redirect} from 'aurelia-router';
-
 export class App {
   configureRouter(config, router) {
     config.title = 'Aurelia';
     config.map([
-      { route: ['', 'dashboard'], name: 'dashboard', moduleId: 'components/dashboard',
-        nav: true, title: 'Home'},
-      { route: 'typography', name: 'typography', moduleId: 'components/typography',
+      { route: ['', 'dashboard'], name: 'dashboard', moduleId: 'components/dashboard/index',
+        nav: true, title: 'Dashboard'},
+      { route: 'typography', name: 'typography', moduleId: 'components/typography/index',
         nav: true, title: 'Typography'},
       { route: 'widget-templates', name: 'widget-templates', moduleId: 'components/widgets/widget-templates',
         nav: true, title: 'Widget templates'},
