@@ -4,7 +4,8 @@ export class Menu {
   @bindable router;
   @bindable routeInfo;
 
-  changeMenu(e, href) {
+  abc(e, href) {
+  	console.log('clicked');
     if(href) this.routeInfo.current = href;
   }
 

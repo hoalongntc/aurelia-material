@@ -41,24 +41,19 @@
     <p>Sorry for the inconvenience!</p>
   </div>
   <![endif]-->
-
-  <require from="layout/layout.html" as="layout"></require>
-  <require from="layout/layout-header" as="layout-header"></require>
-  <require from="layout/layout-body.html" as="layout-body"></require>
-  <require from="layout/layout-footer.html" as="layout-footer"></require>
-  <require from="layout/sidebar-left" as="sidebar-left"></require>
-  <require from="layout/elements/menu" as="menu"></require>
-
+  <require from="components/layout/index.html" as="layout"></require>
+  <require from="components/layout/header" as="lheader"></require>
+  <require from="components/layout/body.html" as="lbody"></require>
+  <require from="components/layout/footer.html" as="lfooter"></require>
+  <require from="components/layout/sidebar-left" as="lsidebar"></require>
+  <require from="components/layout/menu-left" as="lmenu"></require>
   <layout>
-    <layout-header layout-cnf.bind="layoutCnf"></layout-header>
-    <layout-body>
-      <sidebar-left layout-cnf.bind="layoutCnf">
-        <menu route-info.bind="routeInfo" router.bind="router"></menu>
-      </sidebar-left>
-    </layout-body>
-    <layout-footer></layout-footer>
+    <lheader layout-cnf.bind="layoutCnf"></lheader>
+    <lbody>
+      <lsidebar layout-cnf.bind="layoutCnf">
+        <lmenu route-info.bind="routeInfo" router.bind="router"></lmenu>
+      </lsidebar>
+    </lbody>
+    <lfooter></lfooter>
   </layout>
-
 </template>
-
-

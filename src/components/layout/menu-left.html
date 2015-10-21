@@ -1,12 +1,10 @@
 <template>
-  <require from="layout/elements/menu-active"></require>
-
+  <require from="components/layout/menu-active"></require>
+  
   <ul class="main-menu">
-    <li repeat.for="m of routeInfo.menu"
-        class="${m.children ? 'sub-menu' : ''}"
-        menu-active="current.bind: routeInfo.current;"
-        click.trigger="changeMenu($event, m.href)">
-      <a><i class="${m.icon}"></i> ${m.title}</a>
+    <li repeat.for="m of routeInfo.menu" class="${m.children ? 'sub-menu' : ''}">
+      <a if.bind="m.href" href.bind="m.href" ><i class="${m.icon}"></i> ${m.title}</a>
+      <a if.bind="!m.href" toggle-on-click="toggled"><i class="${m.icon}"></i> ${m.title}</a>
       <ul>
         <li repeat.for="cm of m.children">
           <a href="${cm.href}">${cm.title}</a>
@@ -14,7 +12,6 @@
       </ul>
     </li>
   </ul>
-
   <!--<ul class="main-menu">
     <li data-ui-sref-active="active"><a data-ui-sref="home" data-ng-click="mactrl.sidebarStat($event)"><i
       class="zmdi zmdi-home"></i> Home</a></li>
